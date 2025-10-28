@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahil Sonar - Personal Portfolio</title>
+    
+    <!-- 1. Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Load Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 3. Configure Tailwind Font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- 4. Custom styles -->
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Hide sections by default */
+        .page-section {
+            display: none;
+        }
+        /* Show the active section */
+        .page-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<!-- 
+  CHANGES FOR DARK MODE:
+  - body: bg-gray-900 text-gray-100 (was bg-gray-100 text-gray-900)
+  - All text colors (e.g., text-gray-700) are now lighter (e.g., text-gray-300)
+  - Content wrapper: bg-gray-800 (was bg-white)
+  - Skill pills: bg-blue-900 text-blue-200 (was bg-blue-100 text-blue-800)
+-->
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+
+    <!-- Main Container -->
+    <div class="container mx-auto max-w-4xl p-4 sm:p-8 relative">
+
+        <!-- =================================== -->
+        <!-- HOME PAGE (PROFILE SELECTION)     -->
+        <!-- =================================== -->
+        <section id="page-home" class="page-section active">
+            <div class="text-center pt-16 pb-12">
+                <h1 class="text-3xl sm:text-4xl font-bold mb-4">Sahil Sonar</h1>
+                <p class="text-xl text-gray-300">What would you like to see?</p>
+            </div>
+            
+            <!-- Profile Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                <!-- About Me Card -->
+                <div onclick="showPage('about')" class="aspect-square bg-blue-500 rounded-lg shadow-lg flex flex-col justify-center items-center text-white font-semibold text-lg cursor-pointer transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    <span>About Me</span>
+                </div>
+                
+                <!-- Qualifications Card -->
+                <div onclick="showPage('qualifications')" class="aspect-square bg-red-500 rounded-lg shadow-lg flex flex-col justify-center items-center text-white font-semibold text-lg cursor-pointer transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13.5M8.25 6.253l7.5 0M8.25 6.253V4.5a2.25 2.25 0 012.25-2.25h1.5a2.25 2.25 0 012.25 2.25v1.753M8.25 6.253L12 10.5l3.75-4.247"></path></svg>
+                    <span>Qualifications</span>
+                </div>
+                
+                <!-- Experience Card -->
+                <div onclick="showPage('experience')" class="aspect-square bg-yellow-500 rounded-lg shadow-lg flex flex-col justify-center items-center text-white font-semibold text-lg cursor-pointer transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span>Experience</span>
+                </div>
+                
+                <!-- Contact Card -->
+                <div onclick="showPage('info')" class="aspect-square bg-green-500 rounded-lg shadow-lg flex flex-col justify-center items-center text-white font-semibold text-lg cursor-pointer transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span>Contact</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================== -->
+        <!-- CONTENT PAGES (WRAPPED IN A DIV)  -->
+        <!-- =================================== -->
+        <div id="content-wrapper" class="bg-gray-800 shadow-lg rounded-lg p-6 sm:p-10 min-h-[400px] hidden">
+            
+            <!-- Back Button -->
+            <button onclick="goHome()" class="mb-6 inline-flex items-center text-blue-400 hover:underline">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                Back to Home
+            </button>
+            
+            <!-- =================================== -->
+            <!-- ABOUT ME PAGE SECTION           -->
+            <!-- =================================== -->
+            <section id="page-about" class="page-section">
+                <h2 class="text-3xl font-semibold mb-6">About Me</h2>
+                <p class="text-gray-300 leading-relaxed mb-4 text-lg">
+                    Hello! I'm Sahil Sonar, an Electronics and Telecommunication Engineering student at Sinhgad Institute Of Technology And Science (SITS) in Pune.
+                </p>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    I am passionate about developing my professional skills and contributing to impactful projects. This website outlines my education, skills, and activities.
+                </p>
+            </section>
+            
+            <!-- =================================== -->
+            <!-- QUALIFICATIONS PAGE SECTION         -->
+            <!-- =================================== -->
+            <section id="page-qualifications" class="page-section">
+                <h2 class="text-3xl font-semibold mb-8">My Qualifications</h2>
+                
+                <!-- Career Objective -->
+                <h3 class="text-2xl font-semibold text-gray-200 mb-3">Career Objective</h3>
+                <p class="text-gray-300 leading-relaxed mb-8">
+                    Seeking an internship opportunity where I can learn, develop my professional skills, and add value to the organization with dedication and hard work.
+                </p>
+
+                <!-- Education -->
+                <h3 class="text-2xl font-semibold text-gray-200 mb-4">Education</h3>
+                <div class="mb-6">
+                    <p class="font-medium text-lg">Bachelor of Engineering (B.E), Electronics and Telecommunication</p>
+                    <p class="text-gray-400">Sinhgad Institute Of Technology And Science (SITS) | 2024 - 2028</p>
+                </div>
+                <div class="mb-6">
+                    <p class="font-medium text-lg">Senior Secondary (XII), Science</p>
+                    <p class="text-gray-400">K Narkhede College, Bhusawal | 2024 (63.00%)</p>
+                </div>
+                <div class="mb-6">
+                    <p class="font-medium text-lg">Secondary (X)</p>
+                    <p class="text-gray-400">St Aloysius Convent High School, Bhusawal | 2022 (73.40%)</p>
+                </div>
+
+                <!-- Skills -->
+                <h3 class="text-2xl font-semibold text-gray-200 mt-10 mb-4">Skills</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="bg-blue-900 text-blue-200 text-sm font-medium px-4 py-2 rounded-full">Business Research</span>
+                    <span class="bg-blue-900 text-blue-200 text-sm font-medium px-4 py-2 rounded-full">Content Writing</span>
+                    <span class="bg-blue-900 text-blue-200 text-sm font-medium px-4 py-2 rounded-full">Data Analysis</span>
+                    <span class="bg-blue-900 text-blue-200 text-sm font-medium px-4 py-2 rounded-full">Content Marketing</span>
+                    <span class="bg-blue-900 text-blue-200 text-sm font-medium px-4 py-2 rounded-full">Social Media Marketing</span>
+                    <span class="bg-blue-900 text-blue-200 text-sm font-medium px-4 py-2 rounded-full">Content Editing</span>
+                    <span class="bg-blue-900 text-blue-200 text-sm font-medium px-4 py-2 rounded-full">Videography</span>
+                </div>
+            </section>
+
+            <!-- =================================== -->
+            <!-- EXPERIENCE PAGE SECTION           -->
+            <!-- =================================== -->
+            <section id="page-experience" class="page-section">
+                <h2 class="text-3xl font-semibold mb-8">Experience & Activities</h2>
+                
+                <!-- Activity 1 -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-200">Volunteer</h3>
+                    <p class="font-medium text-gray-400 mb-2">We Foundation River Cleaning Campaign | Feb 2025</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>Contributed to environmental awareness and community service.</li>
+                    </ul>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-200">Member</h3>
+                    <p class="font-medium text-gray-400 mb-2">College Media Team</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>Assisted in content creation, photography/videography, and event coverage.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- =================================== -->
+            <!-- CONTACT INFO PAGE SECTION         -->
+            <!-- =================================== -->
+            <section id="page-info" class="page-section">
+                <h2 class="text-3xl font-semibold mb-8">Contact Information</h2>
+                
+                <h3 class="text-2xl font-semibold text-gray-200 mb-4">Get in Touch</h3>
+                <ul class="list-none space-y-4 text-lg">
+                    <li>
+                        <strong>Email:</strong> 
+                        <a href="mailto:sahilsonar51@gmail.com" class="text-blue-400 hover:underline">sahilsonar51@gmail.com</a>
+                    </li>
+                    <li>
+                        <strong>Phone:</strong> 
+                        <span class="text-gray-300">+91 9511839260</span>
+                    </li>
+                    <li>
+                        <strong>Location:</strong> 
+                        <span class="text-gray-300">Pune, India</span>
+                    </li>
+                    <li>
+                        <strong>GitHub:</strong> 
+                        <a href="#" class="text-blue-400 hover:underline">[Your GitHub Profile URL]</a>
+                        <span class="text-sm text-gray-400 block"> (Add your link here)</span>
+                    </li>
+                    <li>
+                        <strong>LinkedIn:</strong> 
+                        <a href="#" class="text-blue-400 hover:underline">[Your LinkedIn Profile URL]</a>
+                        <span class="text-sm text-gray-400 block"> (Add your link here)</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center text-gray-400 mt-12">
+            <p>&copy; <span id="current-year"></span> Sahil Sonar. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- =================================== -->
+    <!-- JAVASCRIPT LOGIC (Navigation Only)-->
+    <!-- =================================== -->
+    <script>
+        // Elements for page navigation
+        const homePage = document.getElementById('page-home');
+        const contentWrapper = document.getElementById('content-wrapper');
+        const allPages = document.querySelectorAll('.page-section');
+
+        // --- Page Navigation Logic ---
+
+        // Show a specific content page
+        function showPage(pageId) {
+            // Hide all pages first
+            allPages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Hide the homepage (profile grid)
+            homePage.classList.remove('active');
+            
+            // Show the content wrapper
+            contentWrapper.style.display = 'block';
+            
+            // Show the specific page inside the wrapper
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Go back to the home (profile) screen
+        function goHome() {
+            // Hide all pages
+            allPages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Hide the content wrapper
+            contentWrapper.style.display = 'none';
+            
+            // Show the homepage
+            homePage.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // --- Footer Year ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
+
+
