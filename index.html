@@ -48,7 +48,6 @@
         }
     </style>
 </head>
-    
 <body class="bg-gray-100 dark:bg-black text-gray-800 dark:text-gray-300 min-h-screen transition-colors duration-200">
 
     <button onclick="toggleTheme()" id="theme-toggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
@@ -63,7 +62,7 @@
             
             <div class="flex flex-col items-center justify-center min-h-[80vh] pt-16 pb-12">
 
-                <h1 class="text-4xl sm:text-5xl font-light text-gray-700 dark:text-gray-200 mb-12">Who's watching?</h1>
+                <h1 class="text-4xl sm:text-5xl font-light text-gray-700 dark:text-gray-200 mb-12">What would you like to see?</h1>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-5 gap-5 sm:gap-8 w-full max-w-2xl">
                     
@@ -200,13 +199,12 @@
                     </li>
                     <li>
                         <strong>GitHub:</strong> 
-                        <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">[Your GitHub Profile URL]</a>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 block"> (Add your link here)</span>
+                        <a href="https://github.com/sahilsonar51" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">sahilsonar51</a>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 block">(Add your link here if different)</span>
                     </li>
                     <li>
                         <strong>LinkedIn:</strong> 
-                        <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">[Your LinkedIn Profile URL]</a>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 block"> (Add your link here)</span>
+                        <a href="https://www.linkedin.com/in/sahil-sonar-17077a335/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">sahil-sonar-17077a335</a>
                     </li>
                 </ul>
             </section>
@@ -223,7 +221,7 @@
         const contentWrapper = document.getElementById('content-wrapper');
         const allPages = document.querySelectorAll('.page-section');
         
-        // NEW: Element for theme
+        // Element for theme
         const htmlRoot = document.getElementById('html-root');
 
         // --- Page Navigation Logic ---
@@ -250,7 +248,7 @@
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
 
-        // --- NEW: Theme Toggle Logic ---
+        // --- Theme Toggle Logic ---
 
         // This function applies the theme on page load
         function applyTheme() {
@@ -277,6 +275,7 @@
 
 </body>
 </html>
+
 
 
 
