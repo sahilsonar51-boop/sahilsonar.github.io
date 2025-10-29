@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -24,43 +24,21 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        /* ======================================= */
-        /* === CUSTOM CSS FOR ANIMATIONS & THEME === */
-        /* ======================================= */
-
-        /* 1. Animated Name (Netflix Style) */
-        .animated-name {
-            /* Ensures smooth transitions for all properties */
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
-        }
-
-        .animated-name:hover {
-            color: #E50914; /* Netflix Red! */
-            transform: scale(1.03); /* Slight grow */
-            text-shadow: 0 0 10px rgba(229, 9, 20, 0.7); /* Glow effect */
-        }
-
-        /* 2. Icon Bounce Animation */
-        .group:hover .aspect-square svg {
-            transform: translateY(-2px); /* Makes the icon move slightly up */
-            transition: transform 0.2s ease-out; 
-        }
-
-        /* 3. Base Font and Fade-In Logic */
+        <style>
+        /* Use Inter as the default font */
         body {
             font-family: 'Inter', sans-serif;
         }
 
+        /* NEW: Define the fade-in animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform: translateY(15px); /* Start 15px down */
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0); /* End at normal position */
             }
         }
 
@@ -69,10 +47,10 @@
             display: none;
         }
 
-        /* Show the active section AND apply the animation */
+        /* CHANGED: Show the active section AND apply the animation */
         .page-section.active {
             display: block;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.5s ease-out; /* Apply the animation */
         }
 
         /* Styles for the theme toggle button */
@@ -83,7 +61,7 @@
         .dark #theme-toggle-sun {
             display: block;
         }
-    </style>
+        </style>
     
 </head>
 <body class="bg-gray-100 dark:bg-black text-gray-800 dark:text-gray-300 min-h-screen transition-colors duration-200">
@@ -100,42 +78,40 @@
             
             <div class="flex flex-col items-center justify-center min-h-[80vh] pt-16 pb-12">
 
-                <h1 class="animated-name text-4xl sm:text-5xl font-extrabold text-gray-800 dark:text-gray-200 mb-12">
-                    Sahil Sonar
-                </h1>
+                <h1 class="text-4xl sm:text-5xl font-light text-gray-700 dark:text-gray-200 mb-12">What would you like to see?</h1>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-5 gap-5 sm:gap-8 w-full max-w-2xl">
                     
-                    <div onclick="showPage('about')" class="group cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95 hover:shadow-xl">
-                        <div class="aspect-square bg-blue-500 rounded-md flex items-center justify-center">
+                    <div onclick="showPage('about')" class="group cursor-pointer">
+                        <div class="aspect-square bg-blue-500 rounded-md flex items-center justify-center transition-transform duration-200 group-hover:scale-105 active:scale-95">
                             <svg class="w-1/2 h-1/2 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <span class="block text-center text-gray-500 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-100 mt-3 text-lg">About Me</span>
                     </div>
                     
-                    <div onclick="showPage('qualifications')" class="group cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95 hover:shadow-xl">
-                        <div class="aspect-square bg-red-500 rounded-md flex items-center justify-center">
+                    <div onclick="showPage('qualifications')" class="group cursor-pointer">
+                        <div class="aspect-square bg-red-500 rounded-md flex items-center justify-center transition-transform duration-200 group-hover:scale-105 active:scale-95">
                             <svg class="w-1/2 h-1/2 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <span class="block text-center text-gray-500 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-100 mt-3 text-lg">Qualifications</span>
                     </div>
 
-                    <div onclick="showPage('experience')" class="group cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95 hover:shadow-xl">
-                        <div class="aspect-square bg-yellow-500 rounded-md flex items-center justify-center">
+                    <div onclick="showPage('experience')" class="group cursor-pointer">
+                        <div class="aspect-square bg-yellow-500 rounded-md flex items-center justify-center transition-transform duration-200 group-hover:scale-105 active:scale-95">
                             <svg class="w-1/2 h-1/2 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <span class="block text-center text-gray-500 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-100 mt-3 text-lg">Experience</span>
                     </div>
 
-                    <div onclick="showPage('info')" class="group cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95 hover:shadow-xl">
-                        <div class="aspect-square bg-green-500 rounded-md flex items-center justify-center">
+                    <div onclick="showPage('info')" class="group cursor-pointer">
+                        <div class="aspect-square bg-green-500 rounded-md flex items-center justify-center transition-transform duration-200 group-hover:scale-105 active:scale-95">
                             <svg class="w-1/2 h-1/2 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <span class="block text-center text-gray-500 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-100 mt-3 text-lg">Contact</span>
                     </div>
 
-                    <div class="group cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95 hover:shadow-xl">
-                        <div class="aspect-square bg-gray-200 dark:bg-transparent rounded-md flex items-center justify-center border-2 border-dashed border-gray-400 dark:border-gray-600">
+                    <div class="group cursor-pointer">
+                        <div class="aspect-square bg-gray-200 dark:bg-transparent rounded-md flex items-center justify-center transition-transform duration-200 group-hover:scale-105 active:scale-95">
                             <svg class="w-1/2 h-1/2 text-gray-500 dark:text-gray-600 group-hover:text-gray-700 dark:group-hover:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                         </div>
                         <span class="block text-center text-gray-500 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-100 mt-3 text-lg">Add Profile</span>
@@ -147,8 +123,7 @@
                     </button>
                 </div>
 
-            </div> 
-        </section>
+            </div> </section>
 
         <div id="content-wrapper" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 sm:p-10 min-h-[400px] hidden">
             
@@ -175,7 +150,7 @@
                     Seeking an internship opportunity where I can learn, develop my professional skills, and add value to the organization with dedication and hard work.
                 </p>
 
-                <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mt-10 mb-4">Education</h3>
+                <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Education</h3>
                 <div class="mb-6">
                     <p class="font-medium text-lg text-gray-800 dark:text-gray-200">Bachelor of Engineering (B.E), Electronics and Telecommunication</p>
                     <p class="text-gray-600 dark:text-gray-400">Sinhgad Institute Of Technology And Science (SITS) | 2024 - 2028</p>
