@@ -41,7 +41,23 @@
                 transform: translateY(0); /* End at normal position */
             }
         }
+        /* --- Animated Name --- */
+        .animated-name {
+            /* This makes the animation smooth */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
 
+        .animated-name:hover {
+            color: #E50914; /* Netflix Red! */
+            
+            /* This makes the text "grow" */
+            transform: scale(1.03); 
+            
+            /* This adds the "glow" */
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.7); 
+        }
+            
         /* Hide sections by default */
         .page-section {
             display: none;
@@ -78,7 +94,10 @@
             
             <div class="flex flex-col items-center justify-center min-h-[80vh] pt-16 pb-12">
 
-                <h1 class="text-4xl sm:text-5xl font-light text-gray-700 dark:text-gray-200 mb-12">What would you like to see?</h1>
+                                <h1 class="animated-name text-4xl sm:text-5xl font-extrabold text-gray-800 dark:text-gray-200 mb-12">
+                    Sahil Sonar
+                                </h1>
+                
                 
                 <div class="grid grid-cols-2 sm:grid-cols-5 gap-5 sm:gap-8 w-full max-w-2xl">
                     
